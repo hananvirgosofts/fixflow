@@ -1,0 +1,14 @@
+{
+	admin off
+	auto_https off
+}
+
+:{$PORT:80} {
+	root * /app
+	encode gzip
+
+	@blocked path /includes /includes/* /storage /storage/* /database /database/*
+	respond @blocked 404
+
+	php_server
+}

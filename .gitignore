@@ -1,0 +1,5 @@
+storage/installed.lock
+uploads/*
+!uploads/.htaccess
+!uploads/index.html
+.vercel

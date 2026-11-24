@@ -9,11 +9,13 @@
     <div class="container-fluid px-3 px-lg-4">
         <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 py-3">
             <a class="wordmark" href="index.php"><span class="mark" aria-hidden="true"></span>FixFlow</a>
-            <nav class="d-flex flex-wrap justify-content-end align-items-center gap-3" aria-label="Public">
+            <nav class="site-nav d-flex flex-wrap justify-content-end align-items-center gap-3" aria-label="Public">
+                <a class="nav-quiet nav-section" href="index.php#movement">How it works</a>
+                <a class="nav-quiet nav-section" href="index.php#coverage">What we repair</a>
                 <?php if (!empty($_SESSION['user_id'])): ?>
-                    <a class="text-link" href="dashboard.php">Overview</a>
+                    <a class="ff-btn" href="dashboard.php">Open your overview</a>
                 <?php else: ?>
-                    <a class="text-link" href="login.php">Sign in</a>
+                    <a class="nav-quiet" href="login.php">Sign in</a>
                     <a class="ff-btn" href="register.php">Create account</a>
                 <?php endif; ?>
             </nav>

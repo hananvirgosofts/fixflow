@@ -211,8 +211,26 @@ a {
     cursor: not-allowed;
 }
 
+.site-nav .nav-quiet {
+    color: var(--navy);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.site-nav .nav-quiet:hover {
+    text-decoration: underline;
+}
+
+.hero .row {
+    align-items: stretch;
+}
+
 .hero-copy {
     padding: 48px 24px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 .hero-copy h1 {
@@ -340,8 +358,73 @@ a {
 }
 
 .section {
-    padding-top: 48px;
-    padding-bottom: 12px;
+    padding-top: 64px;
+    padding-bottom: 8px;
+}
+
+.section-lead {
+    max-width: 42rem;
+    margin: -6px 0 22px;
+    font-size: 1.0625rem;
+}
+
+.desk-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+}
+
+.desk-strip div {
+    padding: 20px 22px 22px;
+    border-left: 1px solid var(--line);
+}
+
+.desk-strip div:first-child {
+    border-left: 0;
+}
+
+.desk-strip strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.desk-strip span {
+    display: block;
+    color: var(--muted);
+}
+
+.close-band {
+    margin-top: 72px;
+    background: var(--navy);
+    color: #f4f8f8;
+    padding: 72px 0;
+}
+
+.close-band h2 {
+    font-family: "Newsreader", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(2.1rem, 4vw, 3.2rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    max-width: 14ch;
+    margin: 0 0 14px;
+}
+
+.close-band p {
+    max-width: 40rem;
+    color: #d7e4e8;
+    margin: 0 0 22px;
+}
+
+.close-band .ff-btn.secondary {
+    color: #f4f8f8;
+    border-color: rgba(244, 248, 248, 0.7);
+}
+
+.close-band .ff-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
 }
 
 .section h2,
@@ -1300,6 +1383,7 @@ a.ticket:hover {
 }
 
 @media (min-width: 992px) {
+    .hero .row { min-height: calc(100vh - 76px); }
     .hero-copy { padding: 72px 56px 64px; }
     .process .step {
         padding-left: 18px;
@@ -1436,6 +1520,16 @@ a.ticket:hover {
 }
 
 @media (max-width: 800px) {
+    .desk-strip {
+        grid-template-columns: 1fr 1fr;
+    }
+    .desk-strip div:nth-child(1),
+    .desk-strip div:nth-child(2) {
+        border-bottom: 1px solid var(--line);
+    }
+    .desk-strip div:nth-child(odd) {
+        border-left: 0;
+    }
     .ledger {
         grid-template-columns: 1fr 1fr;
     }
@@ -1453,6 +1547,19 @@ a.ticket:hover {
 }
 
 @media (max-width: 720px) {
+    .site-nav .nav-section {
+        display: none;
+    }
+    .desk-strip {
+        grid-template-columns: 1fr;
+    }
+    .desk-strip div {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+    }
+    .desk-strip div:first-child {
+        border-top: 0;
+    }
     .load-chart {
         grid-template-columns: 1fr;
     }

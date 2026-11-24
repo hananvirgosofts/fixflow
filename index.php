@@ -30,7 +30,7 @@ if (!$sample) {
     ];
 }
 
-$pageTitle = 'Campus maintenance';
+$pageTitle = 'Campus maintenance desk';
 $signedIn = !empty($_SESSION['user_id']);
 require __DIR__ . '/includes/header.php';
 ?>
@@ -41,7 +41,7 @@ require __DIR__ . '/includes/header.php';
                 <div class="hero-copy">
                     <p class="campus-line">Campus maintenance for <?= e(UNIVERSITY) ?></p>
                     <h1>Report a fault.<br>Follow it until it is fixed.</h1>
-                    <p class="lede">Students and staff file maintenance problems in classrooms, laboratories, offices, and hostels. An administrator assigns each complaint to a maintenance worker, and the status stays on the record until the job is closed.</p>
+                    <p class="lede">Students and staff file a fault in a classroom, laboratory, office, or hostel. The desk gives it a ticket, an administrator assigns a worker, and the same record stays open until the repair is rated.</p>
                     <div class="actions">
                         <?php if ($signedIn): ?>
                             <a class="ff-btn" href="dashboard.php">Open your overview</a>
@@ -72,8 +72,28 @@ require __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<section class="container section">
+<section class="desk-strip" aria-label="What stays on the record">
+    <div>
+        <strong>One ticket</strong>
+        <span>Every complaint receives a number that does not change.</span>
+    </div>
+    <div>
+        <strong>A visible status</strong>
+        <span>Submitted, assigned, in progress, resolved, or rejected.</span>
+    </div>
+    <div>
+        <strong>The right unit</strong>
+        <span>Electrical, plumbing, furniture, laboratory, building, and housekeeping.</span>
+    </div>
+    <div>
+        <strong>A rating at the end</strong>
+        <span>The person who filed the complaint rates the repair once.</span>
+    </div>
+</section>
+
+<section class="container section" id="movement">
     <h2>How a complaint moves</h2>
+    <p class="section-lead">The ticket number stays the same from the first report to the rating.</p>
     <div class="row g-0 process">
         <div class="col-md-6 col-lg-3">
             <article class="step">
@@ -106,8 +126,9 @@ require __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<section class="container section">
+<section class="container section" id="coverage">
     <h2>Problems the desk covers</h2>
+    <p class="section-lead">Choose the unit that can repair the fault. A photograph can be attached when it helps.</p>
     <dl class="catalog">
         <?php foreach (category_catalog() as $category): ?>
             <div>
@@ -118,8 +139,9 @@ require __DIR__ . '/includes/header.php';
     </dl>
 </section>
 
-<section class="container section">
+<section class="container section" id="people">
     <h2>Three people, one record</h2>
+    <p class="section-lead">The person who reports the fault, the administrator, and the worker all see the same complaint.</p>
     <div class="roles">
         <section>
             <h3>Students and staff</h3>
@@ -136,6 +158,21 @@ require __DIR__ . '/includes/header.php';
             <p>Open the jobs assigned to your unit, mark them in progress, and record the repair when the work is finished.</p>
             <p class="example">Example: replace the microscope lamp and close the job.</p>
         </section>
+    </div>
+</section>
+
+<section class="close-band">
+    <div class="container">
+        <h2>Open the maintenance desk</h2>
+        <p>Create an account if you study or work at <?= e(UNIVERSITY) ?>. An administrator or a maintenance unit signs in with the account they were given.</p>
+        <div class="actions">
+            <?php if ($signedIn): ?>
+                <a class="ff-btn" href="dashboard.php">Open your overview</a>
+            <?php else: ?>
+                <a class="ff-btn" href="register.php">Create an account</a>
+                <a class="ff-btn secondary" href="login.php">Sign in</a>
+            <?php endif; ?>
+        </div>
     </div>
 </section>
 <?php require __DIR__ . '/includes/footer.php'; ?>

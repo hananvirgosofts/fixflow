@@ -460,6 +460,66 @@ a {
     color: var(--navy);
 }
 
+.mod-mark {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 1px solid var(--line);
+    color: var(--navy);
+    margin-bottom: 12px;
+}
+
+.process .mod-mark {
+    box-shadow: 0 0 0 6px var(--fog);
+}
+
+.mod-mark .ico {
+    width: 22px;
+    height: 22px;
+}
+
+.desk-strip div {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: center;
+}
+
+.desk-strip .mod-mark {
+    grid-row: 1 / span 2;
+    margin-bottom: 0;
+}
+
+.process .mod-mark {
+    animation: mark-in 0.5s ease both;
+}
+
+.process .col-md-6:nth-child(2) .mod-mark { animation-delay: 0.15s; }
+.process .col-md-6:nth-child(3) .mod-mark { animation-delay: 0.3s; }
+.process .col-md-6:nth-child(4) .mod-mark { animation-delay: 0.45s; }
+
+.mod-file .ico path {
+    animation: ink 0.85s ease both;
+}
+
+.mod-assign .ico path:last-of-type {
+    animation: ink 0.5s ease 0.35s both;
+}
+
+.mod-work .ico {
+    transform-origin: 68% 72%;
+    animation: work-swing 1.4s ease-in-out 0.4s 2;
+}
+
+.mod-rate .ico {
+    transform-origin: center;
+    animation: star-pop 0.75s ease 0.55s both;
+}
+
 .step h3,
 .roles h3 {
     font-size: 1.05rem;
@@ -483,16 +543,62 @@ a {
 
 .catalog dt {
     display: flex;
-    align-items: flex-start;
-    gap: 8px;
+    align-items: center;
+    gap: 10px;
     font-weight: 600;
 }
 
-.catalog dt .ico {
+.catalog dt .cat-ico {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    background: #fff;
+    border: 1px solid var(--line);
+    color: var(--navy);
+}
+
+.catalog dt .cat-ico .ico {
     width: 18px;
     height: 18px;
-    margin-top: 2px;
-    color: var(--brass-deep);
+    margin: 0;
+}
+
+.cat-bolt:hover .ico,
+.cat-bolt:focus-within .ico {
+    animation: bolt-flash 0.55s ease;
+}
+
+.cat-drop:hover .ico,
+.cat-drop:focus-within .ico {
+    animation: drop-fall 0.7s ease;
+}
+
+.cat-fan:hover .ico,
+.cat-fan:focus-within .ico {
+    transform-origin: center;
+    animation: fan-spin 1s linear infinite;
+}
+
+.cat-spark:hover .ico,
+.cat-spark:focus-within .ico {
+    transform-origin: center;
+    animation: spark-pop 0.55s ease;
+}
+
+.cat-chair:hover .ico,
+.cat-chair:focus-within .ico {
+    transform-origin: bottom center;
+    animation: chair-sit 0.45s ease;
+}
+
+.cat-flask:hover .ico,
+.cat-flask:focus-within .ico {
+    transform-origin: 50% 80%;
+    animation: flask-tip 0.55s ease;
 }
 
 .catalog dd {
@@ -1385,6 +1491,25 @@ a.ticket:hover {
 @media (min-width: 992px) {
     .hero .row { min-height: calc(100vh - 76px); }
     .hero-copy { padding: 72px 56px 64px; }
+    .process {
+        position: relative;
+    }
+    .process::after {
+        content: "";
+        position: absolute;
+        top: 44px;
+        left: 9%;
+        right: 9%;
+        height: 2px;
+        background: var(--brass);
+        transform-origin: left center;
+        animation: grow-bar 1s ease both;
+        z-index: 0;
+    }
+    .process .mod-mark {
+        position: relative;
+        z-index: 1;
+    }
     .process .step {
         padding-left: 18px;
         border-left: 1px solid var(--line);
@@ -1648,6 +1773,54 @@ a.ticket:hover {
 @keyframes step-ping {
     0% { transform: scale(0.82); opacity: 0.7; }
     100% { transform: scale(1.35); opacity: 0; }
+}
+
+@keyframes mark-in {
+    from { transform: scale(0.86); }
+    to { transform: none; }
+}
+
+@keyframes ink {
+    from { stroke-dasharray: 42; stroke-dashoffset: 42; }
+    to { stroke-dasharray: 42; stroke-dashoffset: 0; }
+}
+
+@keyframes star-pop {
+    0% { transform: scale(0.55) rotate(-14deg); }
+    65% { transform: scale(1.14) rotate(6deg); }
+    100% { transform: none; }
+}
+
+@keyframes bolt-flash {
+    0%, 100% { opacity: 1; }
+    45% { opacity: 0.2; }
+}
+
+@keyframes drop-fall {
+    0% { transform: translateY(-5px); }
+    70% { transform: translateY(2px); }
+    100% { transform: none; }
+}
+
+@keyframes fan-spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes spark-pop {
+    0% { transform: scale(0.8); }
+    55% { transform: scale(1.16); }
+    100% { transform: none; }
+}
+
+@keyframes chair-sit {
+    0% { transform: translateY(-3px); }
+    100% { transform: none; }
+}
+
+@keyframes flask-tip {
+    0%, 100% { transform: rotate(0deg); }
+    40% { transform: rotate(-8deg); }
+    70% { transform: rotate(6deg); }
 }
 
 @media print {

@@ -74,18 +74,22 @@ require __DIR__ . '/includes/header.php';
 
 <section class="desk-strip" aria-label="What stays on the record">
     <div>
+        <span class="mod-mark mod-file"><?= icon('complaints') ?></span>
         <strong>One ticket</strong>
         <span>Every complaint receives a number that does not change.</span>
     </div>
     <div>
+        <span class="mod-mark mod-assign"><?= icon('user-check') ?></span>
         <strong>A visible status</strong>
         <span>Submitted, assigned, in progress, resolved, or rejected.</span>
     </div>
     <div>
+        <span class="mod-mark mod-work"><?= icon('wrench') ?></span>
         <strong>The right unit</strong>
         <span>Electrical, plumbing, furniture, laboratory, building, and housekeeping.</span>
     </div>
     <div>
+        <span class="mod-mark mod-rate"><?= icon('star') ?></span>
         <strong>A rating at the end</strong>
         <span>The person who filed the complaint rates the repair once.</span>
     </div>
@@ -97,28 +101,32 @@ require __DIR__ . '/includes/header.php';
     <div class="row g-0 process">
         <div class="col-md-6 col-lg-3">
             <article class="step">
-                <span class="step-no"><span>1</span><?= icon('complaints') ?></span>
+                <span class="mod-mark mod-file"><?= icon('complaints') ?></span>
+                <span class="step-no">1</span>
                 <h3>File the complaint</h3>
                 <p>Describe the fault, where it is, and how urgent it is. A photograph is optional.</p>
             </article>
         </div>
         <div class="col-md-6 col-lg-3">
             <article class="step">
-                <span class="step-no"><span>2</span><?= icon('user-check') ?></span>
+                <span class="mod-mark mod-assign"><?= icon('user-check') ?></span>
+                <span class="step-no">2</span>
                 <h3>Assign a worker</h3>
                 <p>An administrator reads the complaint and gives it to the maintenance unit that can repair it.</p>
             </article>
         </div>
         <div class="col-md-6 col-lg-3">
             <article class="step">
-                <span class="step-no"><span>3</span><?= icon('wrench') ?></span>
+                <span class="mod-mark mod-work"><?= icon('wrench') ?></span>
+                <span class="step-no">3</span>
                 <h3>Update the job</h3>
                 <p>The worker marks the job in progress and writes what was done when it is resolved.</p>
             </article>
         </div>
         <div class="col-md-6 col-lg-3">
             <article class="step">
-                <span class="step-no"><span>4</span><?= icon('star') ?></span>
+                <span class="mod-mark mod-rate"><?= icon('star') ?></span>
+                <span class="step-no">4</span>
                 <h3>Leave feedback</h3>
                 <p>After the complaint is resolved, the person who filed it rates the repair.</p>
             </article>
@@ -131,8 +139,9 @@ require __DIR__ . '/includes/header.php';
     <p class="section-lead">Choose the unit that can repair the fault. A photograph can be attached when it helps.</p>
     <dl class="catalog">
         <?php foreach (category_catalog() as $category): ?>
+            <?php $catIcon = category_icon_name($category[0]); ?>
             <div>
-                <dt class="with-ico"><?= icon(category_icon_name($category[0])) ?><?= e($category[0]) ?></dt>
+                <dt><span class="cat-ico cat-<?= e($catIcon) ?>"><?= icon($catIcon) ?></span><?= e($category[0]) ?></dt>
                 <dd><?= e($category[1]) ?></dd>
             </div>
         <?php endforeach; ?>
@@ -144,16 +153,19 @@ require __DIR__ . '/includes/header.php';
     <p class="section-lead">The person who reports the fault, the administrator, and the worker all see the same complaint.</p>
     <div class="roles">
         <section>
+            <span class="mod-mark mod-file"><?= icon('complaints') ?></span>
             <h3>Students and staff</h3>
             <p>File a complaint for a classroom, laboratory, office, or hostel, then follow the status from Submitted through Resolved.</p>
             <p class="example">Example: the projector in CS Lab 2 will not turn on.</p>
         </section>
         <section>
+            <span class="mod-mark mod-assign"><?= icon('user-check') ?></span>
             <h3>Administrator</h3>
             <p>Review new complaints, assign the right worker, reject duplicates, and read the maintenance report.</p>
             <p class="example">Example: send a leaking tap to the plumbing unit.</p>
         </section>
         <section>
+            <span class="mod-mark mod-work"><?= icon('wrench') ?></span>
             <h3>Maintenance worker</h3>
             <p>Open the jobs assigned to your unit, mark them in progress, and record the repair when the work is finished.</p>
             <p class="example">Example: replace the microscope lamp and close the job.</p>
